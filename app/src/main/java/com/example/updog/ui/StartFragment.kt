@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.updog.R
+import com.example.updog.data.repo.model.DogImageRepoModel
+import com.example.updog.data.repo.model.DogRepoModel
 
 class StartFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -19,5 +17,9 @@ class StartFragment : Fragment() {
     ): View? {
         activity?.title = "Breeds"
         return inflater.inflate(R.layout.fragment_start, container, false)
+    }
+
+    interface OnChooseBreedClickListener {
+        fun onItemClick(newlySelected: DogRepoModel)
     }
 }

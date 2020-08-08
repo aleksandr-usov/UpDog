@@ -25,7 +25,6 @@ abstract class AppModule {
                 DogDatabase::class.java,
                 "dog_database"
             )
-
             return builder.build()
         }
     }
