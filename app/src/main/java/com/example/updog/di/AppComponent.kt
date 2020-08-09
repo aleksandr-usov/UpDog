@@ -14,7 +14,7 @@ import javax.inject.Singleton
 
 @Singleton
 interface AppComponent {
-    fun inject(MainFragment: StartFragment)
+    fun inject(startFragment: StartFragment)
 
     @Component.Builder
     interface Builder {

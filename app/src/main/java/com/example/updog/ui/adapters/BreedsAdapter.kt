@@ -5,18 +5,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.updog.R
-import com.example.updog.data.repo.model.DogRepoModel
+import com.example.updog.data.repo.model.DogModel
 import com.example.updog.ui.StartFragment
 import kotlinx.android.synthetic.main.breed_list_element.view.*
 import java.lang.ref.WeakReference
 
-class AllBreedsAdapter(
+class BreedsAdapter(
     val listener: StartFragment.OnChooseBreedClickListener
-) : RecyclerView.Adapter<AllBreedsAdapter.BreedViewHolder>() {
+) : RecyclerView.Adapter<BreedsAdapter.BreedViewHolder>() {
 
-    private val allBreeds = mutableListOf<DogRepoModel>()
+    private val allBreeds = mutableListOf<DogModel>()
 
-    fun setItems(newItems: List<DogRepoModel>) {
+    fun setItems(newItems: List<DogModel>) {
         allBreeds.clear()
         allBreeds.addAll(newItems)
         notifyDataSetChanged()
@@ -41,11 +41,11 @@ class AllBreedsAdapter(
     }
 
     inner class BreedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private lateinit var item: WeakReference<DogRepoModel>
+        private lateinit var item: WeakReference<DogModel>
         private val textViewBreed = itemView.tv_breed_name
         private val textViewSubbreeds = itemView.tv_subbreed_count
 
-        fun bind(item: DogRepoModel) {
+        fun bind(item: DogModel) {
             this.item = WeakReference(item)
 
             textViewBreed.text = item.name

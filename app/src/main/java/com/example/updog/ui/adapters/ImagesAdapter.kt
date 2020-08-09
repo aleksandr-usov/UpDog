@@ -5,14 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.updog.R
-import com.example.updog.data.repo.model.DogImageRepoModel
+import com.example.updog.data.repo.model.DogImageModel
 import java.lang.ref.WeakReference
 
 class ImagesAdapter() : RecyclerView.Adapter<ImagesAdapter.ImageViewHolder>() {
 
-    private val images = mutableListOf<DogImageRepoModel>()
+    private val images = mutableListOf<DogImageModel>()
 
-    fun setItems(newItems: List<DogImageRepoModel>) {
+    fun setItems(newItems: List<DogImageModel>) {
         images.clear()
         images.addAll(newItems)
         notifyDataSetChanged()
@@ -37,9 +37,9 @@ class ImagesAdapter() : RecyclerView.Adapter<ImagesAdapter.ImageViewHolder>() {
     }
 
     inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private lateinit var item: WeakReference<DogImageRepoModel>
+        private lateinit var item: WeakReference<DogImageModel>
 
-        fun bind(item: DogImageRepoModel) {
+        fun bind(item: DogImageModel) {
             this.item = WeakReference(item)
 
             //TODO: How do we get images here

@@ -3,11 +3,11 @@ package com.example.updog.data.repo.local.db
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.example.updog.data.repo.model.DogImageRepoModel
-import com.example.updog.data.repo.model.DogRepoModel
+import com.example.updog.data.repo.model.DogImageModel
+import com.example.updog.data.repo.model.DogModel
 
 @Database(
-    entities = [DogRepoModel::class, DogImageRepoModel::class],
+    entities = [DogModel::class, DogImageModel::class],
     version = 1,
     exportSchema = false
 )

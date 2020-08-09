@@ -9,15 +9,14 @@ import androidx.room.PrimaryKey
     tableName = "dog_images",
     foreignKeys = [
         ForeignKey(
-            entity = DogRepoModel::class,
+            entity = DogModel::class,
             parentColumns = ["name"],
             childColumns = ["parent_dog"],
             onDelete = ForeignKey.CASCADE
         )
     ]
 )
-
-data class DogImageRepoModel(
+data class DogImageModel(
     @ColumnInfo(name = "parent_dog")
     val parentDogName: String,
     @PrimaryKey(autoGenerate = false)
