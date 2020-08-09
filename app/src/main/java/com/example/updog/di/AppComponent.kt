@@ -1,7 +1,8 @@
 package com.example.updog.di
 
 import com.example.updog.UpDogApplication
-import com.example.updog.ui.StartFragment
+import com.example.updog.ui.BreedFragment
+import com.example.updog.ui.SubbreedFragment
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -14,7 +15,7 @@ import javax.inject.Singleton
 
 @Singleton
 interface AppComponent {
-    fun inject(startFragment: StartFragment)
+    fun inject(breedFragment: BreedFragment)
 
     @Component.Builder
     interface Builder {

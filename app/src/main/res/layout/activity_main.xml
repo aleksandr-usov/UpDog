@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/nav_graph"
-        tools:layout="@layout/fragment_start" />
+        tools:layout="@layout/fragment_breed" />
 
     <FrameLayout
         android:id="@+id/fl_container"

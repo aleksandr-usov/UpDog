@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.updog.R
 import com.example.updog.data.repo.model.DogModel
-import com.example.updog.ui.StartFragment
+import com.example.updog.ui.BreedFragment
 import kotlinx.android.synthetic.main.breed_list_element.view.*
 import java.lang.ref.WeakReference
 
 class BreedsAdapter(
-    val listener: StartFragment.OnChooseBreedClickListener
+    val listener: BreedFragment.OnChooseBreedClickListener
 ) : RecyclerView.Adapter<BreedsAdapter.BreedViewHolder>() {
 
     private val allBreeds = mutableListOf<DogModel>()
