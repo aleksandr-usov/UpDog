@@ -16,8 +16,6 @@ import com.example.updog.R
 import com.example.updog.data.repo.model.DogModel
 import com.example.updog.ui.adapters.SubbreedsAdapter
 import com.example.updog.ui.viewmodel.MainViewModel
-import kotlinx.android.synthetic.main.fragment_breed.*
-import kotlinx.android.synthetic.main.fragment_subbreed.*
 
 class SubbreedFragment : Fragment() {
 
