@@ -26,6 +26,11 @@ android {
             debuggable true
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -68,4 +73,5 @@ dependencies {
     implementation 'android.arch.navigation:navigation-fragment:1.0.0'
     implementation("com.squareup.okhttp3:logging-interceptor:4.8.0")
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

@@ -21,37 +21,17 @@ class SubbreedFragment : Fragment() {
         ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
     }
 
-    private val subbreedsRecyclerView by lazy { requireView().findViewById<RecyclerView>(R.id.rv_subbreeds_list) }
+    private lateinit var subbreedsRecyclerView: RecyclerView
 
     private val listener: OnChooseSubbreedClickListener = object :
         OnChooseSubbreedClickListener {
         override fun onItemClick(newlySelected: DogModel) {
-            //TODO: go to pictures
+            mainViewModel.onSubbreedClicked(newlySelected)
             findNavController().navigate(R.id.action_subbreedFragment_to_imageFragment)
-
-//            findNavController().previousBackStackEntry?.savedStateHandle?.set(
-//                "newlySelectedCategory",
-//                newlySelected
-//            )
-//            findNavController().navigateUp()
         }
     }
 
     private val allSubbreedsAdapter = SubbreedsAdapter(listener)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-//        val callback: OnBackPressedCallback =
-//            object : OnBackPressedCallback(true) {
-//                override fun handleOnBackPressed() {
-//                    findNavController().navigate(R.id.action_subbreedFragment_to_breedFragment)
-//
-//                }
-//            }
-//        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-    }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,11 +42,14 @@ class SubbreedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViews()
+        initViews(view)
         initLiveData()
     }
 
-    private fun initViews() {
+    private fun initViews(view: View) {
+        with(view) {
+            subbreedsRecyclerView = findViewById(R.id.rv_subbreeds_list)
+        }
         subbreedsRecyclerView.adapter = allSubbreedsAdapter
     }
 

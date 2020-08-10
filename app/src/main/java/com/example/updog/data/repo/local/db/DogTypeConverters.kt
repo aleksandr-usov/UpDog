@@ -1,6 +1,7 @@
 package com.example.updog.data.repo.local.db
 
 import androidx.room.TypeConverter
+import com.example.updog.data.api.model.DogImageResponse
 import com.example.updog.data.repo.model.DogImageModel
 import com.example.updog.data.repo.model.DogModel
 import com.google.gson.Gson
@@ -24,16 +25,16 @@ class DogTypeConverters {
     }
 
     @TypeConverter
-    fun stringToDogImages(data: String?): List<DogImageModel?>? {
+    fun stringToDogImages(data: String?): List<DogImageResponse?>? {
         if (data == null) {
             return emptyList()
         }
-        val listType = object : TypeToken<List<DogImageModel?>?>() {}.type
-        return gson.fromJson<List<DogImageModel?>>(data, listType)
+        val listType = object : TypeToken<List<DogImageResponse?>?>() {}.type
+        return gson.fromJson<List<DogImageResponse?>>(data, listType)
     }
 
     @TypeConverter
-    fun dogImagesToString(dogImages: List<DogImageModel?>?): String? {
+    fun dogImagesToString(dogImages: List<DogImageResponse?>?): String? {
         return gson.toJson(dogImages)
     }
 }

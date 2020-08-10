@@ -1,6 +1,6 @@
 package com.example.updog.data.repo.remote
 
-import com.example.updog.data.api.model.DogImageResponse
+import com.example.updog.data.api.model.DogImages
 import com.example.updog.data.repo.model.DogModel
 import io.reactivex.Single
 import org.json.JSONObject
@@ -16,7 +16,7 @@ class DogRemoteDataSource @Inject constructor(
         val breedsObject = jsonObject["message"] as JSONObject
         val breedNamesArray = breedsObject.names() ?: throw RuntimeException()
         val breedsList = mutableListOf<DogModel>()
-        for(i in 0 until breedNamesArray.length()) {
+        for (i in 0 until breedNamesArray.length()) {
             val breedName = breedNamesArray[i] as String
             val subbreedsArray = breedsObject.getJSONArray(breedName)
             val subbreedsObjects = mutableListOf<DogModel>()
@@ -38,5 +38,10 @@ class DogRemoteDataSource @Inject constructor(
 
     fun getAllDogImages(
         breed: String
-    ): Single<List<DogImageResponse>> = upDogService.getAllImagesByBreed(breed)
+    ): Single<DogImages> = upDogService.getAllImagesByBreed(breed).map { DogImages(it.message) }
+
+    fun getAllDogImagesBySubbreed(
+        breed: String,
+        subbreed: String
+    ): Single<DogImages> = upDogService.getAllImagesBySubbreed(breed, subbreed).map { DogImages(it.message) }
 }

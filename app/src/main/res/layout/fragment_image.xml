@@ -9,23 +9,12 @@
         android:id="@+id/rv_images_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/image_list_element" />
-
-    <ImageView
-        android:id="@+id/iv_like"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:elevation="4dp"
-        android:layout_marginBottom="40dp"
-        android:src="@drawable/ic_heart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.updog.data.repo.model.DogModel
 import io.reactivex.Completable
-import io.reactivex.Flowable
 import io.reactivex.Single
 
 @Dao

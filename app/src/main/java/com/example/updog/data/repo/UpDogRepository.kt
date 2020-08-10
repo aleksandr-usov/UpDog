@@ -1,6 +1,7 @@
 package com.example.updog.data.repo
 
 import com.example.updog.data.api.model.DogImageResponse
+import com.example.updog.data.api.model.DogImages
 import com.example.updog.data.repo.local.DogLocalDataSource
 import com.example.updog.data.repo.model.DogImageModel
 import com.example.updog.data.repo.model.DogModel
@@ -30,7 +31,11 @@ class UpDogRepository @Inject constructor(
             }
     }
 
-    fun getAllImages(breed: String): Single<List<DogImageResponse>> {
+    fun getAllImages(breed: String): Single<DogImages> {
         return dogRemoteDataSource.getAllDogImages(breed)
+    }
+
+    fun getAllImagesBySubbreed(breed: String, subbreed: String): Single<DogImages> {
+        return dogRemoteDataSource.getAllDogImagesBySubbreed(breed, subbreed)
     }
 }

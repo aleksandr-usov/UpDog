@@ -3,16 +3,20 @@ package com.example.updog.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.updog.R
 import com.example.updog.data.repo.model.DogImageModel
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.image_list_element.view.*
 import java.lang.ref.WeakReference
 
 class ImagesAdapter() : RecyclerView.Adapter<ImagesAdapter.ImageViewHolder>() {
 
-    private val images = mutableListOf<DogImageModel>()
+    private val images = mutableListOf<String>()
 
-    fun setItems(newItems: List<DogImageModel>) {
+    fun setItems(newItems: List<String>) {
         images.clear()
         images.addAll(newItems)
         notifyDataSetChanged()
@@ -37,13 +41,13 @@ class ImagesAdapter() : RecyclerView.Adapter<ImagesAdapter.ImageViewHolder>() {
     }
 
     inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private lateinit var item: WeakReference<DogImageModel>
+        private lateinit var item: WeakReference<String>
+        private var imageView = itemView.iv_image
 
-        fun bind(item: DogImageModel) {
+        fun bind(item: String) {
             this.item = WeakReference(item)
 
-            //TODO: How do we get images here
-
+            Picasso.get().load(item).into(imageView)
         }
     }
 }

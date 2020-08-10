@@ -5,13 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.RecyclerView
 import com.example.updog.R
 import com.example.updog.UpDogApplication
@@ -39,7 +36,8 @@ class BreedFragment : Fragment() {
                 mainViewModel.onBreedWithSubbreedsClicked(newlySelected)
                 findNavController().navigate(R.id.action_breedFragment_to_subbreedFragment)
             } else {
-                //TODO: go to pictures
+                mainViewModel.onBreedClicked(newlySelected)
+                findNavController().navigate(R.id.action_breedFragment_to_imageFragment)
             }
         }
     }
@@ -76,7 +74,7 @@ class BreedFragment : Fragment() {
             allDogsAdapter.setItems(it)
         })
 
-        mainViewModel.allPictures.observe(viewLifecycleOwner, Observer {
+        mainViewModel.allImages.observe(viewLifecycleOwner, Observer {
             Log.d("TAG111", it.toString())
         })
     }
