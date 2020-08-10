@@ -19,5 +19,8 @@ interface UpDogService {
     fun getAllImagesByBreed(@Path(value = "breed") breed: String): Single<DogImageResponse>
 
     @GET("breed/{breed}/{subbreed}/images")
-    fun getAllImagesBySubbreed(@Path(value = "breed") breed: String, @Path(value = "subbreed") subbreed: String): Single<DogImageResponse>
+    fun getAllImagesBySubbreed(
+        @Path(value = "breed") breed: String,
+        @Path(value = "subbreed") subbreed: String
+    ): Single<DogImageResponse>
 }

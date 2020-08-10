@@ -11,7 +11,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class MainViewModel constructor(
-   private val upDogRepository: UpDogRepository
+    private val upDogRepository: UpDogRepository
 ) : ViewModel() {
 
     private val disposables = CompositeDisposable()
@@ -26,7 +26,7 @@ class MainViewModel constructor(
     val allImages: LiveData<DogImages> = _allImages
 
     private val _selectedBreed = MutableLiveData<DogModel>()
-    val selectedBreed:LiveData<DogModel> = _selectedBreed
+    val selectedBreed: LiveData<DogModel> = _selectedBreed
 
     init {
         disposables.add(
@@ -77,5 +77,9 @@ class MainViewModel constructor(
 
     fun onSubbreedClicked(selectedBreed: DogModel) {
         _selectedBreed.value = selectedBreed
+    }
+
+    fun onPictureShown() {
+
     }
 }

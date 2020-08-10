@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.updog.R
 import com.example.updog.data.repo.model.DogModel
 import com.example.updog.ui.SubbreedFragment
-import kotlinx.android.synthetic.main.breed_list_element.view.*
 import kotlinx.android.synthetic.main.subbreed_list_element.view.*
 import java.lang.ref.WeakReference
 
@@ -28,7 +27,8 @@ class SubbreedsAdapter(
         viewType: Int
     ): SubbreedViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.subbreed_list_element, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.subbreed_list_element, parent, false)
         return SubbreedViewHolder(view)
     }
 
@@ -48,7 +48,7 @@ class SubbreedsAdapter(
         fun bind(item: DogModel) {
             this.item = WeakReference(item)
 
-            textViewSubbreed.text = item.name
+            textViewSubbreed.text = item.name.capitalize()
 
             itemView.setOnClickListener { listener.onItemClick(item) }
         }

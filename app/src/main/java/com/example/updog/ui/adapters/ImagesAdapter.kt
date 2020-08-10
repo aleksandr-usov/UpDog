@@ -1,18 +1,19 @@
 package com.example.updog.ui.adapters
 
+import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.appcompat.view.menu.MenuView
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.updog.R
-import com.example.updog.data.repo.model.DogImageModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.image_list_element.view.*
 import java.lang.ref.WeakReference
 
-class ImagesAdapter() : RecyclerView.Adapter<ImagesAdapter.ImageViewHolder>() {
+
+class ImagesAdapter : RecyclerView.Adapter<ImagesAdapter.ImageViewHolder>() {
 
     private val images = mutableListOf<String>()
 
@@ -48,6 +49,10 @@ class ImagesAdapter() : RecyclerView.Adapter<ImagesAdapter.ImageViewHolder>() {
             this.item = WeakReference(item)
 
             Picasso.get().load(item).into(imageView)
+
+            val intent = Intent("custom-message")
+            intent.putExtra("url", item)
+            LocalBroadcastManager.getInstance(Activity()).sendBroadcast(intent)
         }
     }
 }

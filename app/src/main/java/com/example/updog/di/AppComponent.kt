@@ -2,7 +2,6 @@ package com.example.updog.di
 
 import com.example.updog.UpDogApplication
 import com.example.updog.ui.BreedFragment
-import com.example.updog.ui.SubbreedFragment
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

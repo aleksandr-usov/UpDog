@@ -1,19 +1,13 @@
 package com.example.updog.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
-import android.widget.Toolbar
-import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.NavController
-import androidx.navigation.Navigation.findNavController
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.updog.R
+import okhttp3.Interceptor
+import okhttp3.Request
+import okhttp3.Response
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,19 +18,28 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        setupActionBarWithNavController(this, navController)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                navController.popBackStack()
-                true
+    override fun onBackPressed() {
+        super.onBackPressed()
+        navController.navigateUp()
+    }
+
+    inner class ErrorInterceptor : Interceptor {
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val request: Request = chain.request()
+            val response = chain.proceed(request)
+
+            if (response.code == 200) {
+                AlertDialog.Builder(this@MainActivity)
+                    .setTitle("Some server error")
+                    .setMessage("Try connecting later")
+                    .setPositiveButton("Ok") { dialogInterface, _ ->
+                        dialogInterface.dismiss()
+                    }
+                    .show()
             }
-            else -> false
+            return response
         }
     }
 }

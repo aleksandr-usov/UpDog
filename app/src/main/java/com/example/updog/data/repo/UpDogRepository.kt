@@ -1,9 +1,7 @@
 package com.example.updog.data.repo
 
-import com.example.updog.data.api.model.DogImageResponse
 import com.example.updog.data.api.model.DogImages
 import com.example.updog.data.repo.local.DogLocalDataSource
-import com.example.updog.data.repo.model.DogImageModel
 import com.example.updog.data.repo.model.DogModel
 import com.example.updog.data.repo.remote.DogRemoteDataSource
 import io.reactivex.Single

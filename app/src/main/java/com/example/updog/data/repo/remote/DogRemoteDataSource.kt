@@ -43,5 +43,6 @@ class DogRemoteDataSource @Inject constructor(
     fun getAllDogImagesBySubbreed(
         breed: String,
         subbreed: String
-    ): Single<DogImages> = upDogService.getAllImagesBySubbreed(breed, subbreed).map { DogImages(it.message) }
+    ): Single<DogImages> =
+        upDogService.getAllImagesBySubbreed(breed, subbreed).map { DogImages(it.message) }
 }

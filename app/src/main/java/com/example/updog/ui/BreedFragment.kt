@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.updog.R
 import com.example.updog.UpDogApplication
@@ -17,6 +19,7 @@ import com.example.updog.ui.adapters.BreedsAdapter
 import com.example.updog.ui.viewmodel.MainViewModel
 import com.example.updog.ui.viewmodel.MainViewModelFactory
 import javax.inject.Inject
+
 
 class BreedFragment : Fragment() {
 
@@ -67,6 +70,12 @@ class BreedFragment : Fragment() {
             dogsRecyclerView = findViewById(R.id.rv_dogs_list)
         }
         dogsRecyclerView.adapter = allDogsAdapter
+
+        val dividerItemDecoration = DividerItemDecoration(
+            dogsRecyclerView.context,
+            LinearLayoutManager.VERTICAL
+        )
+        dogsRecyclerView.addItemDecoration(dividerItemDecoration)
     }
 
     private fun initLiveData() {

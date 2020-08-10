@@ -41,6 +41,8 @@ abstract class AppModule {
         fun provideService(): UpDogService {
             val client = OkHttpClient.Builder()
             client.addInterceptor(HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) })
+            //client.addInterceptor()
+
             val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

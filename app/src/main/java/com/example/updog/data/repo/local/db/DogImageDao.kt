@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.updog.data.repo.model.DogImageModel
-import io.reactivex.Flowable
 import io.reactivex.Single
 
 @Dao

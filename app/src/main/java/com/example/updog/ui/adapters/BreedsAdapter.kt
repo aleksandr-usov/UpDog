@@ -48,7 +48,7 @@ class BreedsAdapter(
         fun bind(item: DogModel) {
             this.item = WeakReference(item)
 
-            textViewBreed.text = item.name
+            textViewBreed.text = item.name.capitalize()
             when {
                 item.subbreeds.size > 1 -> {
                     textViewSubbreeds.text = "(${item.subbreeds.size} subbreeds)"
@@ -57,7 +57,7 @@ class BreedsAdapter(
                     textViewSubbreeds.text = "(1 subbreed)"
                 }
                 else -> {
-                    textViewSubbreeds.text =  ""
+                    textViewSubbreeds.text = ""
                 }
             }
 
