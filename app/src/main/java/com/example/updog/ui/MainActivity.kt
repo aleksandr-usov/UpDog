@@ -24,22 +24,4 @@ class MainActivity : AppCompatActivity() {
         super.onBackPressed()
         navController.navigateUp()
     }
-
-    inner class ErrorInterceptor : Interceptor {
-        override fun intercept(chain: Interceptor.Chain): Response {
-            val request: Request = chain.request()
-            val response = chain.proceed(request)
-
-            if (response.code == 200) {
-                AlertDialog.Builder(this@MainActivity)
-                    .setTitle("Some server error")
-                    .setMessage("Try connecting later")
-                    .setPositiveButton("Ok") { dialogInterface, _ ->
-                        dialogInterface.dismiss()
-                    }
-                    .show()
-            }
-            return response
-        }
-    }
 }

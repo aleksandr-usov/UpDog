@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.view.*
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -27,6 +28,8 @@ class ImageFragment : Fragment() {
     private lateinit var imagesRecyclerView: RecyclerView
 
     private val toolbar by lazy { requireView().findViewById<androidx.appcompat.widget.Toolbar>(R.id.tb_images_toolbar) }
+
+    private val progressBar by lazy { requireView().findViewById<ProgressBar>(R.id.pb_images) }
 
     private val imagesAdapter = ImagesAdapter()
 
@@ -94,6 +97,9 @@ class ImageFragment : Fragment() {
 
     private fun initLiveData() {
         mainViewModel.allImages.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                progressBar.visibility = View.GONE
+            }
             imagesAdapter.setItems(it.imageUrls)
         })
 

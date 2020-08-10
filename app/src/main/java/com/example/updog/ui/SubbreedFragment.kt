@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -15,6 +16,8 @@ import com.example.updog.R
 import com.example.updog.data.repo.model.DogModel
 import com.example.updog.ui.adapters.SubbreedsAdapter
 import com.example.updog.ui.viewmodel.MainViewModel
+import kotlinx.android.synthetic.main.fragment_breed.*
+import kotlinx.android.synthetic.main.fragment_subbreed.*
 
 class SubbreedFragment : Fragment() {
 
@@ -25,6 +28,7 @@ class SubbreedFragment : Fragment() {
     private lateinit var subbreedsRecyclerView: RecyclerView
 
     private val toolbar by lazy { requireView().findViewById<androidx.appcompat.widget.Toolbar>(R.id.tb_subbreed_toolbar) }
+    private val progressBar by lazy { requireView().findViewById<ProgressBar>(R.id.pb_subbreed) }
 
     private val listener: OnChooseSubbreedClickListener = object :
         OnChooseSubbreedClickListener {
@@ -66,6 +70,9 @@ class SubbreedFragment : Fragment() {
 
     private fun initLiveData() {
         mainViewModel.allSubbreeds.observe(viewLifecycleOwner, Observer {
+            if (it.isNotEmpty()) {
+                progressBar.visibility = View.GONE
+            }
             allSubbreedsAdapter.setItems(it)
         })
     }

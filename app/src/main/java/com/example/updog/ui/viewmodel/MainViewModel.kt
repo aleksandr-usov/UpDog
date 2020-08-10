@@ -29,6 +29,10 @@ class MainViewModel constructor(
     val selectedBreed: LiveData<DogModel> = _selectedBreed
 
     init {
+        getAllDogs()
+    }
+
+    private fun getAllDogs() {
         disposables.add(
             upDogRepository.getAllDogs()
                 .subscribeOn(Schedulers.io())
@@ -77,9 +81,5 @@ class MainViewModel constructor(
 
     fun onSubbreedClicked(selectedBreed: DogModel) {
         _selectedBreed.value = selectedBreed
-    }
-
-    fun onPictureShown() {
-
     }
 }

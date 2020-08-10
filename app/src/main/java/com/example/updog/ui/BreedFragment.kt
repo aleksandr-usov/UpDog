@@ -1,7 +1,6 @@
 package com.example.updog.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,6 @@ import com.example.updog.ui.adapters.BreedsAdapter
 import com.example.updog.ui.viewmodel.MainViewModel
 import com.example.updog.ui.viewmodel.MainViewModelFactory
 import javax.inject.Inject
-
 
 class BreedFragment : Fragment() {
 
@@ -61,8 +59,8 @@ class BreedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViews(view)
         initLiveData()
+        initViews(view)
     }
 
     private fun initViews(view: View) {
@@ -81,10 +79,6 @@ class BreedFragment : Fragment() {
     private fun initLiveData() {
         mainViewModel.allBreeds.observe(viewLifecycleOwner, Observer {
             allDogsAdapter.setItems(it)
-        })
-
-        mainViewModel.allImages.observe(viewLifecycleOwner, Observer {
-            Log.d("TAG111", it.toString())
         })
     }
 
